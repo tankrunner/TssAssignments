@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<center><title>Employee Form</title></center>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="emp.css">
+</head>
+<body>
+      <center><h1>Employee Form</h1></center>    	
+      	<fieldset class="formHeader">
+      		Employee
+      	</fieldset>
+
+     	<fieldset>
+    		<form id="form1" method="post">
+    			<div class="flexing">   	
+    				<label class="flexingLabel">Employee Id:</label> 
+    				<input type="text" class="flexingInput">
+    			</div>
+    			<br>
+
+    			<div class="flexing">   	
+    				<label class="flexingLabel">Name:</label> 
+    				<input type="text" class="flexingInput"> 
+    			</div>
+    			<br>
+
+    			<div class="flexing">   	
+    				<label class="flexingLabel">Team:</label>
+    				<input type="text" class="flexingInput"> 
+    			</div>
+    			<br>
+
+    			<div class="flexing">   	
+    				<label class="flexingLabel">Designation:</label> 
+    						<select name="Designation" class="flexingInput">
+    							<option value="Tester">Tester</option>
+    							<option value="Developer">Developer</option>
+    						 </select>
+    			</div>
+    			<br>
+	    		
+	    		<div class="flexing">   	
+    				<label class="flexingLabel">Gender:</label>
+    				<div class="flexingGender"> 
+    					<input type="radio" id="male" name="gender" value="male" class="flexingInput"> 
+    					<label for="male">Male</label>
+						<input type="radio" id="female" name="gender" value="female"> 
+						<label for="female">Female</label>
+					</div>
+				</div>
+    			<br>
+
+    			<input type="submit" name="submit" style="float:right;">
+    		</form>
+		</fieldset>
+</body>
+</html>
