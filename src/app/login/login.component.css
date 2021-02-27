@@ -1,0 +1,23 @@
+fieldset{
+    border: 1px solid #d3d3d3;
+    margin:0 auto;
+	width:700px;
+    padding: 10px;
+}
+
+.centerText{
+    text-align: center;
+}
+
+.alert{
+    width: 700px;
+    margin: 0 auto 20px auto;
+}
+
+.loginForm{
+    margin-top: 20px;
+}
+
+.formHeader{
+	background-color:#f0f0f0;
+}
