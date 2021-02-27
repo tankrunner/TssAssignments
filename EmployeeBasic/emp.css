@@ -9,7 +9,6 @@ input[type=submit] {
 }
 
 input[type=text],select{
-	width:350px;
 	height:30px;
 	border-radius: 8px;
 	border-color: #d3d3d3;
@@ -20,12 +19,23 @@ input[type=text],select{
 	.flexing{
 	display: flex;
 }
+fieldset{
+	margin:0 auto;
+	width:70%;
+	border-color:#f0f0f0
+}
+
 }
 
 @media (max-width: 768px){
 	.flexing{
 	display: flex;
 	flex-direction: column;
+}
+fieldset{
+	margin:0 auto;
+	width:95%;
+	border-color:#f0f0f0
 }
 }
 .flexing label{
@@ -34,12 +44,6 @@ input[type=text],select{
 
 .flexing input,select,.flexingGender{
 	flex: 1;
-}
-
-fieldset{
-	margin:0 auto;
-	width:700px;
-	border-color:#f0f0f0
 }
 
 .formHeader{
