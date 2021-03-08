@@ -1,29 +1,28 @@
-    <!-- <div class="centerText">
+<!-- <div class="centerText">
         <h1>Login Form</h1> 
     </div>     	 -->
 
-    <div class="loginForm container">
-        <div class="alert alert-danger" role="alert" style="visibility: {{visibility}};">
-            Incorrect Username or Password.
-        </div>
+<div class="loginForm">
+  <div class="alert alert-danger" role="alert" style="visibility: {{visibility}};">
+    Incorrect Username or Password.
+  </div>
 
-      	<fieldset class="formHeader">
-      		<h4>Login</h4>
-      	</fieldset>
+  <fieldset class="formHeader">
+    <h4>Login</h4>
+  </fieldset>
 
-     	<fieldset>
-    		<form>
-                <div class="mb-3">
-                  <label class="form-label">Username</label>
-                  <input type="text" class="form-control" name="username" [(ngModel)]="username">
-                </div>
-                <div class="mb-3">
-                  <label for="exampleInputPassword1" class="form-label">Password</label>
-                  <input type="password" class="form-control" name="password" [(ngModel)]="password">
-                </div>
-                <button type="submit" class="btn btn-primary" (click)="logIn()">Login</button>
-              </form>
-		</fieldset>
+  <fieldset>
+    <form>
+      <div class="mb-3">
+        <label class="form-label">Username</label>
+        <input type="text" class="form-control" name="username" [(ngModel)]="username">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" name="password" [(ngModel)]="password">
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="logIn()">Login</button>
+    </form>
+  </fieldset>
 
-    </div>
-
+</div>

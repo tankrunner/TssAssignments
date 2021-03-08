@@ -12,12 +12,15 @@ export class DloginGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean{
-    if(this.stateService.returnState()){
-      return true;
-    }
-    else{
-      return false;
-    }
+    // if(this.stateService.returnState()){
+    //   return true;
+    // }
+    // else{
+    //   return false;
+    // }
+
+    return this.stateService.returnState();
+
   }
   
 }

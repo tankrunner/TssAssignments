@@ -21,21 +21,26 @@ const routes: Routes = [
     component:DirectoryLoginComponent
   },
   {
+    path:'add',
+    component:AddComponent
+  },
+  {
     path:'directory',
     component:DirectoryComponent,
-    canActivate:[DloginGuard],
-    children:[
-      {
-        path:'add',
-        component:AddComponent
-      },
-    ]
+    canActivate:[DloginGuard]
+    // children:[
+    //   {
+    //     path:'add',
+    //     component:AddComponent
+    //   },
+    // ]
   },
   {
     path:'',
     redirectTo:'directoryLogin',
     pathMatch:'full'
   }
+  
 
 ];
 
