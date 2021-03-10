@@ -5,6 +5,7 @@ import { LoginstateService } from '../loginstate.service';
 import { getDefaultCompilerOptions } from 'typescript';
 import {TransferService} from '../../supportingFiles/transfer.service';
 import { Router, NavigationExtras,ActivatedRoute } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-add',
@@ -19,16 +20,20 @@ export class AddComponent implements OnInit {
   gender: string;
   model: NgbDateStruct;
   visibility="hidden";
-
+  dateStrGlobal:string;
   constructor( private parser: NgbDateParserFormatter,private sendData:TransferService,private router:Router) { }
 
   ngOnInit(): void {
+    console.log();
+  }
+  showDate(){
+    this.dateStrGlobal=this.parser.format(this.model);
   }
   send() {
-    
     if (this.name && this.id && this.team && this.designation && this.gender && this.model) {
       this.visibility="hidden";
       let dateStr = this.parser.format(this.model);
+      //this.dateStrGlobal=dateStr;
       let member = { id: this.id, name: this.name, team: this.team, designation: this.designation, gender: this.gender, joiningDate: dateStr };
       //this.sendData.data.push(member);
       this.sendData.getDetails(member);

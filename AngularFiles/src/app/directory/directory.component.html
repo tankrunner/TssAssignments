@@ -26,7 +26,10 @@
                     <td>{{emp.team}}</td>
                     <td>{{emp.designation}}</td>
                     <td>{{emp.gender}}</td>
-                    <td>{{emp.joiningDate}}</td>
+                    <div *ngFor="let dateF of format">
+                        <td>{{emp.joiningDate | date:dateF}}</td>
+                    </div>
+                    <!-- <td>{{emp.joiningDate}}</td> -->
                 </tr>
             </tbody>
         </table>

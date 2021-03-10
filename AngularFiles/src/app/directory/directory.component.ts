@@ -17,6 +17,7 @@ export class DirectoryComponent implements OnInit {
   }
 
   data=this.transfer.setDetails();
+  format=['dd/MM/yyyy','ddMMyyyy','dd-MM-yyyy','yyyy:MM:dd'];
   // member={id:1, name:'Rahul Ghatkar', team:'Product Development Team', designation:'Developer',gender:'Male', joiningDate:'22/02/2021'};
 
   add(){
