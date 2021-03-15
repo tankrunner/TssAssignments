@@ -20,5 +20,7 @@
             <button type="submit" class="btn btn-primary" (click)="logIn()">Login</button>
         </form>
     </fieldset>
+    <li *ngFor="let obj of getData">{{obj['summary'] | json}}</li>
+    <li *ngFor="let obj of getData">{{obj | json}}</li>
 
 </div>

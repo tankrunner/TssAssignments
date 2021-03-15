@@ -10,6 +10,8 @@ import { DirectoryComponent } from './directory/directory.component';
 import { AddComponent } from './add/add.component';
 import { DloginGuard } from './dlogin.guard';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +25,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule
   ],
   providers: [DloginGuard],
   bootstrap: [AppComponent]
