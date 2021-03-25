@@ -9,8 +9,9 @@ import { DirectoryLoginComponent } from './directory-login/directory-login.compo
 import { DirectoryComponent } from './directory/directory.component';
 import { AddComponent } from './add/add.component';
 import { DloginGuard } from './dlogin.guard';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    NgbModule,
+    BsDatepickerModule.forRoot(),
+    BrowserAnimationsModule,
     HttpClientModule
   ],
   providers: [DloginGuard],

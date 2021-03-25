@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras,ActivatedRoute } from '@angular/router';
 import { LoginstateService } from '../loginstate.service';
 import {TransferService} from '../../supportingFiles/transfer.service';
+import {FetchdataService} from '../fetchdata.service';
 
 @Component({
   selector: 'app-directory',
@@ -12,22 +13,16 @@ export class DirectoryComponent implements OnInit {
 
   constructor(private router:Router, private stateService:LoginstateService, private route:ActivatedRoute,private transfer:TransferService) { }
 
-  ngOnInit() {
-    // this.transfer.setDetails()==null?console.log('null hai'):console.log('no null');//this.data.push(this.transfer.setDetails());
-  }
+  ngOnInit() {}
 
   data=this.transfer.setDetails();
   format=['dd/MM/yyyy','ddMMyyyy','dd-MM-yyyy','yyyy:MM:dd'];
-  // member={id:1, name:'Rahul Ghatkar', team:'Product Development Team', designation:'Developer',gender:'Male', joiningDate:'22/02/2021'};
 
-  add(){
-    // this.data.push(this.member);
-    // this.router.navigate(['add'],{relativeTo:this.route});
+  add():void{
     this.router.navigate(['add']);
-
   }
 
-  logout(){
+  logout():void{
     this.stateService.setState(false);
     this.router.navigate(['directoryLogin']);
   }

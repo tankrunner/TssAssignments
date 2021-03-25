@@ -7,15 +7,12 @@ import { HttpClient } from '@angular/common/http';
 export class FetchdataService {
 
   constructor(private http:HttpClient) { }
-  
+  myurl='https://localhost:44356/weatherforecast';
   getRequest(){
-    let myurl='https://localhost:44356/weatherforecast';
-    return this.http.get(myurl);
+    return this.http.get(this.myurl);
   }
 
   isLogin(uname:string, pass:string){
-    let myurl=`https://localhost:44356/weatherforecast/${uname}/${pass}`;
-    return this.http.get(myurl);
-
+    return this.http.post(this.myurl+'/GetLogin',{uname:uname,pass:pass},{observe:'response'});
   }
 }

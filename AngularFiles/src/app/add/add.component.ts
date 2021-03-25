@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { DirectoryComponent } from '../directory/directory.component';
-import { NgbDateStruct, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 import { LoginstateService } from '../loginstate.service';
 import { getDefaultCompilerOptions } from 'typescript';
 import {TransferService} from '../../supportingFiles/transfer.service';
 import { Router, NavigationExtras,ActivatedRoute } from '@angular/router';
-import { DatePipe } from '@angular/common';
+import { DatePipe, formatDate } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-add',
@@ -18,31 +19,45 @@ export class AddComponent implements OnInit {
   team: string;
   designation: string;
   gender: string;
-  model: NgbDateStruct;
   visibility="hidden";
-  dateStrGlobal:string;
-  constructor( private parser: NgbDateParserFormatter,private sendData:TransferService,private router:Router) { }
+  getDate:Date;
+  format='dd-MM-yyyy';
+  subscription:Subscription;
 
-  ngOnInit(): void {
-    console.log();
+  constructor( private sendData:TransferService,private router:Router, private http:HttpClient) { 
   }
-  showDate(){
-    this.dateStrGlobal=this.parser.format(this.model);
-  }
-  send() {
-    if (this.name && this.id && this.team && this.designation && this.gender && this.model) {
+
+  ngOnInit(): void {}
+  
+  //Add Button
+  send():void{
+    if (this.name && this.id && this.team && this.designation && this.gender && this.getDate) {
       this.visibility="hidden";
-      let dateStr = this.parser.format(this.model);
-      //this.dateStrGlobal=dateStr;
-      let member = { id: this.id, name: this.name, team: this.team, designation: this.designation, gender: this.gender, joiningDate: dateStr };
-      //this.sendData.data.push(member);
+      let member = { id: this.id, name: this.name, team: this.team, designation: this.designation, gender: this.gender, joiningDate: this.getDate};
       this.sendData.getDetails(member);
-      this.router.navigate(['directory']);
-      
+      this.router.navigate(['directory']);    
     }
     else{
       this.visibility="visible";
     }
   }
 
+  public retPostData;
+
+  //Post Button
+  post(data):void{
+    let formattedDate=formatDate(this.getDate,this.format,'en-US');
+    const myurl="https://localhost:44356/weatherforecast";
+    console.log(data);
+    this.subscription=this.http.post('https://localhost:44356/weatherforecast',{id:this.id,name:this.name,team:this.team,designation:this.designation,gender:this.gender,date:formattedDate.toString()},
+    {responseType:'text'}).subscribe(
+      data=>{this.retPostData=data;});
+    console.log(formattedDate);
+  }
+
+  ngOnDestroy():void{
+    this.subscription.unsubscribe();
+  }
 }
+
+        
