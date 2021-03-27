@@ -6,6 +6,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 
+using Business.Managers;
+
 namespace WebApiEmp.Controllers
 {
     [ApiController]
@@ -24,7 +26,8 @@ namespace WebApiEmp.Controllers
             _logger = logger;
         }
         List<EmployeeData> empList = new List<EmployeeData>();
-        
+
+        LoginManager loginManager = new LoginManager();
 
         [HttpGet("{id}")]
         public List<EmployeeData> Get(int id)
@@ -50,7 +53,10 @@ namespace WebApiEmp.Controllers
         public IActionResult GetLogin([FromBody] Login obj)
         {
             var myObj = obj;
-            if (myObj.uname == "rg" && myObj.pass == "hello")
+            string[] arr = new string[2];
+            arr[0] = myObj.uname;
+            arr[1] = myObj.pass;
+            if (loginManager.authenticateUser(arr))
             {
                 return Ok();
             }
