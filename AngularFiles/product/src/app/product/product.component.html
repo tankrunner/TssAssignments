@@ -1,0 +1,67 @@
+<div class="row">
+    <div class="col">
+        <h1>Products</h1>
+    </div>
+    <div class="col">
+        <button type="button" class="btn btn-info float-right" (click)="viewCart()">View Cart ({{total}})</button>
+    </div>
+</div>
+
+<div class="container">
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Availability</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Product 1</th>
+                    <td>{{availability[0]}}</td>
+                    <td></td>
+                    <td>
+                        <button type="button" class="btn btn-info" (click)="add(0)">Add 1</button>
+                    </td>
+                </tr>
+            </tbody>
+
+            <tbody>
+                <tr>
+                    <th scope="row">Product 2</th>
+                    <td>{{availability[1]}}</td>
+                    <td></td>
+                    <td>
+                        <button type="button" class="btn btn-info" (click)="add(1)">Add 2</button>
+                    </td>
+                </tr>
+            </tbody>
+
+            <tbody>
+                <tr>
+                    <th scope="row">Product 3</th>
+                    <td>{{availability[2]}}</td>
+                    <td></td>
+                    <td>
+                        <button type="button" class="btn btn-info" (click)="add(2)">Add 3</button>
+                    </td>
+                </tr>
+            </tbody>
+
+            <tbody>
+                <tr>
+                    <th scope="row">Product 4</th>
+                    <td>{{availability[3]}}</td>
+                    <td></td>
+                    <td>
+                        <button type="button" class="btn btn-info" (click)="add(3)">Add 4</button>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+</div>
