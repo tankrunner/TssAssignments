@@ -19,45 +19,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">Product 1</th>
-                    <td>{{availability[0]}}</td>
-                    <td></td>
+                <tr *ngFor="let obj of product; let i=index">
+                    <th scope="row">{{obj.product_name}}</th>
+                    <td>{{obj.product_availableQuantity}}</td>
+                    <td>{{obj.product_desc}}</td>
                     <td>
-                        <button type="button" class="btn btn-info" (click)="add(0)">Add 1</button>
-                    </td>
-                </tr>
-            </tbody>
-
-            <tbody>
-                <tr>
-                    <th scope="row">Product 2</th>
-                    <td>{{availability[1]}}</td>
-                    <td></td>
-                    <td>
-                        <button type="button" class="btn btn-info" (click)="add(1)">Add 2</button>
-                    </td>
-                </tr>
-            </tbody>
-
-            <tbody>
-                <tr>
-                    <th scope="row">Product 3</th>
-                    <td>{{availability[2]}}</td>
-                    <td></td>
-                    <td>
-                        <button type="button" class="btn btn-info" (click)="add(2)">Add 3</button>
-                    </td>
-                </tr>
-            </tbody>
-
-            <tbody>
-                <tr>
-                    <th scope="row">Product 4</th>
-                    <td>{{availability[3]}}</td>
-                    <td></td>
-                    <td>
-                        <button type="button" class="btn btn-info" (click)="add(3)">Add 4</button>
+                        <button type="button" class="btn btn-info" (click)="add(i)">Add</button>
                     </td>
                 </tr>
             </tbody>

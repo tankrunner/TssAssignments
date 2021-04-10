@@ -12,7 +12,7 @@ export class CartPaymentService {
   buttonText:string;
   navigateTo:string;
 
-  setStatusMessage(header:string,msg:string,buttonText:string,navigateTo:string){
+  setStatusMessage(header:string,msg:string,buttonText:string,navigateTo:string):void{
     this.header=header;
     this.msg=msg;
     this.buttonText=buttonText;

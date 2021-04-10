@@ -20,14 +20,16 @@ namespace WebApiEmp.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
+        private readonly LoginManager _loginManager;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, LoginManager loginManager)
         {
             _logger = logger;
+            _loginManager = loginManager;
         }
         List<EmployeeData> empList = new List<EmployeeData>();
 
-        LoginManager loginManager = new LoginManager();
+        //LoginManager loginManager = new LoginManager(); //Tight Coupling is not a good practice
 
         [HttpGet("{id}")]
         public List<EmployeeData> Get(int id)
@@ -56,7 +58,7 @@ namespace WebApiEmp.Controllers
             string[] arr = new string[2];
             arr[0] = myObj.uname;
             arr[1] = myObj.pass;
-            if (loginManager.authenticateUser(arr))
+            if (_loginManager.authenticateUser(arr))
             {
                 return Ok();
             }
@@ -73,5 +75,6 @@ namespace WebApiEmp.Controllers
             empList.Add(myobj);
             return empList;
         }
+
     }
 }

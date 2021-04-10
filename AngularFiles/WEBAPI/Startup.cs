@@ -10,6 +10,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Session;
+using Business.Managers;
+
 
 namespace WebApiEmp
 {
@@ -27,12 +30,19 @@ namespace WebApiEmp
         {
            
             services.AddControllers();
+            services.AddScoped<LoginManager,LoginManager>();
+            services.AddScoped<CheckQuantity, CheckQuantity>();
             services.AddCors(options =>
             {
                 options.AddDefaultPolicy(builder =>
                 {
                     builder.WithOrigins("http://localhost:4200").AllowAnyHeader();
                 });
+            });
+
+            services.AddDistributedMemoryCache();
+            services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromMinutes(1);//You can set Time   
             });
         }
 
@@ -53,6 +63,8 @@ namespace WebApiEmp
             app.UseCors();
 
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

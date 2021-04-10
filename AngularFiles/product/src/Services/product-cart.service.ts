@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,12 +6,13 @@ import { Injectable } from '@angular/core';
 })
 export class ProductCartService {
 
-  constructor() { }
-  availableQuantity=[23,20,20,20];
+  constructor(private http:HttpClient) { }
   Added=[0,0,0,0];
   totalItemsInCart=this.Added.reduce((a, b) => a + b, 0);
-  calculate(){
+
+  calculate():number{
     this.totalItemsInCart=this.Added.reduce((a, b) => a + b, 0);
     return this.totalItemsInCart;
   }
+  
 }

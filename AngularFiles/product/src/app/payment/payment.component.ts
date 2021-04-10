@@ -23,7 +23,7 @@ export class PaymentComponent implements OnInit {
   }
 
   //btn
-  NavigateTo(){
+  NavigateTo():void{
     this.router.navigate([this.navigateTo]);
   }
 
