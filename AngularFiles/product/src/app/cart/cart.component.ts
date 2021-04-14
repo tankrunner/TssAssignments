@@ -19,6 +19,7 @@ export class CartComponent implements OnInit {
   subscription: Subscription;
   subQuantity: Subscription;
   subPay:Subscription;
+  visibility:string[];
 
   constructor(private productCart: ProductCartService, private http: HttpClient, private router: Router, private cartPayment: CartPaymentService) {
     this.subscription=new Subscription();
@@ -30,6 +31,8 @@ export class CartComponent implements OnInit {
     this.p3 = this.productCart.Added[2];
     this.p4 = this.productCart.Added[3];
     //this.availability=this.productCart.availableQuantity;
+    this.visibility=this.productCart.visibility;
+    console.log(this.visibility);
   }
 
   buyNow():void {
@@ -45,6 +48,9 @@ export class CartComponent implements OnInit {
           if(data.body)//payment success
           {
             this.cartPayment.setStatusMessage("Thank You!","Payment Successful.","Continue Shopping","product");
+            this.productCart.Added.fill(0);
+            this.productCart.calculate();
+            this.productCart.initializeVisibility();
             this.router.navigate(['payment']);
           }
           else//payment failed

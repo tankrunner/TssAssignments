@@ -30,6 +30,7 @@ export class ProductComponent implements OnInit {
 
   add(pid:number):void{
     console.log(pid);
+    this.productCart.visibility[pid]="visible";
     this.productCart.Added[pid]=1;
     this.total=this.productCart.calculate();
     console.log(this.productCart.Added);
