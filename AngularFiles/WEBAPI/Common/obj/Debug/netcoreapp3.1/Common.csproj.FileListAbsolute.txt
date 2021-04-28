@@ -1,0 +1,9 @@
+D:\rahul\ProgDocs\.NET\WebApiEmp\Common\bin\Debug\netcoreapp3.1\Common.deps.json
+D:\rahul\ProgDocs\.NET\WebApiEmp\Common\bin\Debug\netcoreapp3.1\Common.dll
+D:\rahul\ProgDocs\.NET\WebApiEmp\Common\bin\Debug\netcoreapp3.1\Common.pdb
+D:\rahul\ProgDocs\.NET\WebApiEmp\Common\obj\Debug\netcoreapp3.1\Common.csprojAssemblyReference.cache
+D:\rahul\ProgDocs\.NET\WebApiEmp\Common\obj\Debug\netcoreapp3.1\Common.AssemblyInfoInputs.cache
+D:\rahul\ProgDocs\.NET\WebApiEmp\Common\obj\Debug\netcoreapp3.1\Common.AssemblyInfo.cs
+D:\rahul\ProgDocs\.NET\WebApiEmp\Common\obj\Debug\netcoreapp3.1\Common.csproj.CoreCompileInputs.cache
+D:\rahul\ProgDocs\.NET\WebApiEmp\Common\obj\Debug\netcoreapp3.1\Common.dll
+D:\rahul\ProgDocs\.NET\WebApiEmp\Common\obj\Debug\netcoreapp3.1\Common.pdb

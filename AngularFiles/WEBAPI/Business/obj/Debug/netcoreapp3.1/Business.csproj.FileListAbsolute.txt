@@ -1,0 +1,12 @@
+D:\rahul\ProgDocs\.NET\WebApiEmp\Business\bin\Debug\netcoreapp3.1\Business.deps.json
+D:\rahul\ProgDocs\.NET\WebApiEmp\Business\bin\Debug\netcoreapp3.1\Business.dll
+D:\rahul\ProgDocs\.NET\WebApiEmp\Business\bin\Debug\netcoreapp3.1\Business.pdb
+D:\rahul\ProgDocs\.NET\WebApiEmp\Business\obj\Debug\netcoreapp3.1\Business.csprojAssemblyReference.cache
+D:\rahul\ProgDocs\.NET\WebApiEmp\Business\obj\Debug\netcoreapp3.1\Business.AssemblyInfoInputs.cache
+D:\rahul\ProgDocs\.NET\WebApiEmp\Business\obj\Debug\netcoreapp3.1\Business.AssemblyInfo.cs
+D:\rahul\ProgDocs\.NET\WebApiEmp\Business\obj\Debug\netcoreapp3.1\Business.csproj.CoreCompileInputs.cache
+D:\rahul\ProgDocs\.NET\WebApiEmp\Business\obj\Debug\netcoreapp3.1\Business.dll
+D:\rahul\ProgDocs\.NET\WebApiEmp\Business\obj\Debug\netcoreapp3.1\Business.pdb
+D:\rahul\ProgDocs\.NET\WebApiEmp\Business\bin\Debug\netcoreapp3.1\Common.dll
+D:\rahul\ProgDocs\.NET\WebApiEmp\Business\bin\Debug\netcoreapp3.1\Common.pdb
+D:\rahul\ProgDocs\.NET\WebApiEmp\Business\obj\Debug\netcoreapp3.1\Business.csproj.CopyComplete

@@ -38,40 +38,42 @@ export class CartComponent implements OnInit {
   buyNow():void {
     let array: number[] = [this.p1, this.p2, this.p3, this.p4];
 
-    this.subQuantity=this.http.post("https://localhost:44356/productcart/productincart", { "addedToCart": array }, { observe: "response" }).subscribe(data => {
+    this.subQuantity=this.http.post("https://localhost:44356/product", { "addedToCart": array }, { observe: "response" }).subscribe(data => {
       console.log(data.body);
+      console.log(data.body[0]);
       this.subscription.add(this.subQuantity);
-      if (data.body)//sufficient quantity
+
+      if(data.body[0]=="Success")
       {
-        this.subPay=this.http.get("https://localhost:44356/payment", { observe: 'response' }).subscribe(data => {
-          this.subscription.add(this.subPay);
-          if(data.body)//payment success
-          {
-            this.cartPayment.setStatusMessage("Thank You!","Payment Successful.","Continue Shopping","product");
-            this.productCart.Added.fill(0);
-            this.productCart.calculate();
-            this.productCart.initializeVisibility();
-            this.router.navigate(['payment']);
-          }
-          else//payment failed
-          {
-            this.cartPayment.setStatusMessage("Order Incomplete","Order could not be completed as your Payment Failed. Please Try Again.","View Cart","cart"); 
-            this.router.navigate(['payment']);
-          }
-        })
-      }
-      else//not avl
-      {
-        this.cartPayment.setStatusMessage("Order Incomplete","Order could not be completed as we have Insufficient Quantity of Items required. Sorry!","View Cart","cart");          
+        this.cartPayment.setStatusMessage(data.body[1],data.body[2],data.body[3],"product");
+        this.productCart.Added.fill(0);
+        this.productCart.calculate();
+        this.productCart.initializeVisibility();
         this.router.navigate(['payment']);
       }
-    });
+      else if(data.body[0]=="Failure")
+      {
+        this.cartPayment.setStatusMessage(data.body[1],data.body[2],data.body[3],"cart"); 
+        this.router.navigate(['payment']);
+      }
+      else if(data.body[0]=="Insufficient")
+      {
+        this.cartPayment.setStatusMessage(data.body[1],data.body[2],data.body[3],"cart"); 
+        this.router.navigate(['payment']);
+      }
+
+    },
+
+    err=>{
+      console.error(err);
+    }
+    
+    );
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
-
 
 }
 // {observe:"response"}
@@ -101,3 +103,28 @@ export class CartComponent implements OnInit {
     //       this.cartPayment.setStatusMessage("Order Incomplete","Order could not be completed as we have Insufficient Quantity of Items required. Sorry!","View Cart","cart");          
     //       this.router.navigate(['payment']);
     // }
+    
+      // if (data.body)//sufficient quantity
+      // {
+      //   this.subPay=this.http.get("https://localhost:44356/payment", { observe: 'response' }).subscribe(data => {
+      //     this.subscription.add(this.subPay);
+      //     if(data.body)//payment success
+      //     {
+      //       this.cartPayment.setStatusMessage("Thank You!","Payment Successful.","Continue Shopping","product");
+      //       this.productCart.Added.fill(0);
+      //       this.productCart.calculate();
+      //       this.productCart.initializeVisibility();
+      //       this.router.navigate(['payment']);
+      //     }
+      //     else//payment failed
+      //     {
+      //       this.cartPayment.setStatusMessage("Order Incomplete","Order could not be completed as your Payment Failed. Please Try Again.","View Cart","cart"); 
+      //       this.router.navigate(['payment']);
+      //     }
+      //   })
+      // }
+      // else//not avl
+      // {
+      //   this.cartPayment.setStatusMessage("Order Incomplete","Order could not be completed as we have Insufficient Quantity of Items required. Sorry!","View Cart","cart");          
+      //   this.router.navigate(['payment']);
+      // }
