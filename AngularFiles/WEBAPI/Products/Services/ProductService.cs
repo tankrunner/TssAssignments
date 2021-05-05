@@ -27,20 +27,22 @@ namespace Products.Services
             new product { product_id=3, product_name = "Product 4", product_desc = "P4", product_availableQuantity = 34 },
         };
 
-        List<int> avl = new List<int>();
+        //List<int> avl = new List<int>();
 
         public List<product> getProducts()
         {
             return Products;
         }
 
-        public async Task<List<string>> checkQuantity(int[] addedToCart)
+        public async Task<List<string>> checkQuantity(addedProduct[] addedToCart)
         {
-            Products.ForEach(x => avl.Add(x.product_availableQuantity));
-    
-            for (int i = 0; i < 4; i++)
+            //Products.ForEach(x => avl.Add(x.product_availableQuantity));
+      
+            for (int i = 0; i < addedToCart.Length; i++)
             {
-                if (addedToCart[i] > avl[i])
+                var k = Products.FindIndex(x=>x.product_name==addedToCart[i].product_name);
+                Debug.WriteLine(k);
+                if(addedToCart[i].addedQuantity>Products[k].product_availableQuantity)
                 {
                     Debug.WriteLine("Insufficient");
                     msg.Add("Insufficient");
@@ -50,6 +52,7 @@ namespace Products.Services
                     return msg;
                 }
             }
+
             var client = _clientFactory.CreateClient();
             var response = await client.GetStringAsync("https://localhost:44356/payment");
             bool paymentStatus = JsonConvert.DeserializeObject<bool>(response);

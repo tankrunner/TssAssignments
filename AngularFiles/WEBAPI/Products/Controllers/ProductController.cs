@@ -34,11 +34,10 @@ namespace Products.Controllers
         public async Task<List<string>> Post([FromBody] productInCart obj)
         {
             var myobj = obj;
-            Debug.WriteLine(myobj.addedToCart[0]);
+            Debug.WriteLine(myobj.addedToCart[0].product_name);
             msg=await _productService.checkQuantity(myobj.addedToCart);
             return msg;
         }
-
 
     }
 }

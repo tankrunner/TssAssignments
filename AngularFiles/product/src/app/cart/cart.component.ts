@@ -4,6 +4,13 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CartPaymentService } from 'src/Services/cart-payment.service';
 import { ProductCartService } from 'src/Services/product-cart.service';
+import {ProductInterface} from 'src/Services/product-cart.service';
+
+interface addedProduct
+{
+  product_name:string;
+  addedQuantity:number;
+}
 
 @Component({
   selector: 'app-cart',
@@ -11,36 +18,34 @@ import { ProductCartService } from 'src/Services/product-cart.service';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-  p1: number;
-  p2: number;
-  p3: number;
-  p4: number;
+  p1:number;
+  p2:number;
+  p3:number;
+  p4:number;
 
   subscription: Subscription;
   subQuantity: Subscription;
   subPay:Subscription;
-  visibility:string[];
+
+  addedArr:addedProduct[]=[];
+  arr:ProductInterface[]=[];
 
   constructor(private productCart: ProductCartService, private http: HttpClient, private router: Router, private cartPayment: CartPaymentService) {
     this.subscription=new Subscription();
   }
 
   ngOnInit(): void {
-    this.p1 = this.productCart.Added[0];
-    this.p2 = this.productCart.Added[1];
-    this.p3 = this.productCart.Added[2];
-    this.p4 = this.productCart.Added[3];
-    //this.availability=this.productCart.availableQuantity;
-    this.visibility=this.productCart.visibility;
-    console.log(this.visibility);
+    this.arr=this.productCart.arr;
+
+    this.arr.forEach(x=>{this.addedArr.push({product_name:x.product_name,addedQuantity:1})});
+    console.log(this.addedArr);
   }
 
   buyNow():void {
-    let array: number[] = [this.p1, this.p2, this.p3, this.p4];
 
-    this.subQuantity=this.http.post("https://localhost:44356/product", { "addedToCart": array }, { observe: "response" }).subscribe(data => {
+    this.subQuantity=this.http.post("https://localhost:44356/product", { "addedToCart": this.addedArr }, { observe: "response" }).subscribe(data => {
       console.log(data.body);
-      console.log(data.body[0]);
+      // console.log(data.body[0]);
       this.subscription.add(this.subQuantity);
 
       if(data.body[0]=="Success")
@@ -72,10 +77,13 @@ export class CartComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
+    console.log(this.addedArr);
     this.subscription.unsubscribe();
   }
 
 }
+
+
 // {observe:"response"}
 // if(this.p1<=this.availability[0] && this.p2<=this.availability[1] && this.p3<=this.availability[2] && this.p4<=this.availability[3]){
     //   this.subscription=this.http.get("https://localhost:44356/payment",{observe:'response'}).subscribe(data=>{

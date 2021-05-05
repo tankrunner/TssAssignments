@@ -10,6 +10,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Products.Services;
+using Products.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace Products
 {
@@ -26,6 +28,7 @@ namespace Products
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<ProductService, ProductService>();
+            services.AddDbContext<ProductContext>(options=>options.UseSqlServer(Configuration["ConnectionString:Productdb"]));
             services.AddControllers();
         }
 

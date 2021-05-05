@@ -3,7 +3,7 @@
         <h1>Products</h1>
     </div>
     <div class="col">
-        <button type="button" class="btn btn-info float-right" [routerLink]="['/cart']">View Cart ({{total}})</button>
+        <button type="button" class="btn btn-info float-right" [routerLink]="['/cart']">View Cart ({{cartCount}})</button>
     </div>
 </div>
 
@@ -24,7 +24,7 @@
                     <td>{{obj.product_availableQuantity}}</td>
                     <td>{{obj.product_desc}}</td>
                     <td>
-                        <button type="button" class="btn btn-info" (click)="add(obj.product_id)">Add</button>
+                        <button type="button" class="btn btn-info" (click)="add(obj.product_id);disableBtn($event);">Add</button>
                     </td>
                 </tr>
             </tbody>

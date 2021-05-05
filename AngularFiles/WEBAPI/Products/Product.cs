@@ -21,8 +21,14 @@ namespace Products
         public int product_availableQuantity { get; set; }
     }
 
+    public class addedProduct
+    {
+        public string product_name { get; set; }
+        public int addedQuantity { get; set; }
+    }
     public class productInCart
     {
-        public int[] addedToCart { get; set; }
+        public addedProduct[] addedToCart { get; set; }
     }
+
 }

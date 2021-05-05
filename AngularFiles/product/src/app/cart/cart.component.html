@@ -9,48 +9,18 @@
 
 
 <div class="container">
-    
-    <div class="row justify-content-md-center" [ngStyle]="{'visibility':visibility[0]}">
-        <div class="col col-lg-2">
-            <h4>
-                Product 1
-            </h4>
-        </div>
-        <div class="col col-lg-2">
-            <input type="number" name="p1" [(ngModel)]="p1">
-        </div>
-    </div>
 
-    <div class="row justify-content-md-center" [ngStyle]="{'visibility':visibility[1]}">
-        <div class="col col-lg-2">
-            <h4>
-                Product 2
-            </h4>
+    <ng-container *ngFor="let obj of addedArr">
+        <div class="row justify-content-md-center">
+            <div class="col col-lg-2">
+                <h4>
+                    {{obj.product_name}}
+                </h4>
+            </div>
+            <div class="col col-lg-2">
+                    <input type="number" [(ngModel)]="obj.addedQuantity" name="obj.product_name">
+            </div>
         </div>
-        <div class="col col-lg-2">
-            <input type="number" name="p2" [(ngModel)]="p2">
-        </div>
-    </div>
+    </ng-container>
 
-    <div class="row justify-content-md-center" [ngStyle]="{'visibility':visibility[2]}">
-        <div class="col col-lg-2">
-            <h4>
-                Product 3
-            </h4>
-        </div>
-        <div class="col col-lg-2">
-            <input type="number" name="p3" [(ngModel)]="p3">
-        </div>
-    </div>
-
-    <div class="row justify-content-md-center" [ngStyle]="{'visibility':visibility[3]}">
-        <div class="col col-lg-2">
-            <h4>
-                Product 4
-            </h4>
-        </div>
-        <div class="col col-lg-2">
-            <input type="number" name="p4" [(ngModel)]="p4">
-        </div>
-    </div>
 </div>
