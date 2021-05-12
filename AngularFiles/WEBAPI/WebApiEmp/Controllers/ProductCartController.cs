@@ -18,12 +18,12 @@ namespace WebApiEmp.Controllers
     [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
     public class ProductCartController : Controller
     {
-        private readonly CheckQuantity _checkQuantity;
+        //private readonly CheckQuantity _checkQuantity;
         private readonly AddedQuantity _addedQuantity;
 
-        public ProductCartController(CheckQuantity checkQuantity, AddedQuantity addedQuantity)
+        public ProductCartController( AddedQuantity addedQuantity)
         {
-            _checkQuantity = checkQuantity;
+            //_checkQuantity = checkQuantity;
             _addedQuantity = addedQuantity;
         }
 
@@ -46,14 +46,14 @@ namespace WebApiEmp.Controllers
 
         [Route("[action]")]
         [HttpPost]
-        public bool productincart([FromBody] productInCart obj)//FromBody headers
+        public void productincart([FromBody] productInCart obj)//FromBody headers
         {
             var myobj = obj;
 
             Products.ForEach(x => avl.Add(x.product_availableQuantity));
 
-            bool b = _checkQuantity.checkQuantity(myobj.addedToCart, avl);
-            return b;
+            //bool b = _checkQuantity.checkQuantity(myobj.addedToCart, avl);
+            //return b;
 
             //HttpContext.Session.SetString("key", JsonConvert.SerializeObject(added));
             //var getKey = JsonConvert.DeserializeObject(HttpContext.Session.GetString("key"));

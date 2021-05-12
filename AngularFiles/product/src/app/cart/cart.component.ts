@@ -8,8 +8,9 @@ import {ProductInterface} from 'src/Services/product-cart.service';
 
 interface addedProduct
 {
-  product_name:string;
-  addedQuantity:number;
+  productId:number;
+  productName:string;
+  productaddedQuantity:number;
 }
 
 @Component({
@@ -18,10 +19,6 @@ interface addedProduct
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-  p1:number;
-  p2:number;
-  p3:number;
-  p4:number;
 
   subscription: Subscription;
   subQuantity: Subscription;
@@ -37,13 +34,13 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
     this.arr=this.productCart.arr;
 
-    this.arr.forEach(x=>{this.addedArr.push({product_name:x.product_name,addedQuantity:1})});
+    this.arr.forEach(x=>{this.addedArr.push({productId:x.productId,productaddedQuantity:1,productName:x.productName})});
     console.log(this.addedArr);
   }
 
   buyNow():void {
 
-    this.subQuantity=this.http.post("https://localhost:44356/product", { "addedToCart": this.addedArr }, { observe: "response" }).subscribe(data => {
+    this.subQuantity=this.http.post("https://localhost:44356/product/cart", { "addedToCart": this.addedArr }, { observe: "response" }).subscribe(data => {
       console.log(data.body);
       // console.log(data.body[0]);
       this.subscription.add(this.subQuantity);
@@ -51,9 +48,7 @@ export class CartComponent implements OnInit {
       if(data.body[0]=="Success")
       {
         this.cartPayment.setStatusMessage(data.body[1],data.body[2],data.body[3],"product");
-        this.productCart.Added.fill(0);
-        this.productCart.calculate();
-        this.productCart.initializeVisibility();
+        this.productCart.arr=[];
         this.router.navigate(['payment']);
       }
       else if(data.body[0]=="Failure")

@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Payment.Services;
 
 namespace Payment
 {
@@ -26,6 +27,7 @@ namespace Payment
         {
             services.AddControllers();
             services.AddHttpClient();
+            services.AddScoped<TransactionService, TransactionService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

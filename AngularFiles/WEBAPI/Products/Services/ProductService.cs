@@ -5,6 +5,11 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using System.Diagnostics;
 using Newtonsoft.Json;
+using Products.Model;
+using Microsoft.EntityFrameworkCore;
+using System.Web;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 
 
 namespace Products.Services
@@ -12,27 +17,67 @@ namespace Products.Services
     public class ProductService
     {
         private readonly IHttpClientFactory _clientFactory;
+        private readonly ProductContext _context;
         public bool _paymentStatus;
-        public ProductService(IHttpClientFactory clientFactory)
+
+        public ProductService(IHttpClientFactory clientFactory, ProductContext context)
         {
             _clientFactory = clientFactory;
+            _context = context;
         }
+
+        public long AddProduct(ProductDB obj)
+        {
+            var newProduct = new ProductDB()
+            {
+                ProductName = obj.ProductName,
+                ProductDesc = obj.ProductDesc,
+                ProductavailableQuantity=obj.ProductavailableQuantity
+            };
+
+            //try 
+            //{
+            //    _context.Products.Add(newProduct);
+            //    _context.SaveChanges();
+            //}
+            //catch(Exception e)
+            //{
+            //    return e.ToString();
+            //}
+            //return "Success";
+            _context.Products.Add(newProduct);
+            _context.SaveChanges();
+
+            return newProduct.ProductId;
+        }
+
+        public async Task<List<ProductDB>> GetAllProducts()
+        {
+            var products = new List<ProductDB>();
+            var tableData = await _context.Products.ToListAsync();
+            if(tableData.Any()==true)//data present in table
+            {
+                foreach(var product in tableData)
+                {
+                    products.Add(new ProductDB() 
+                    {
+                        ProductId=product.ProductId,
+                        ProductName=product.ProductName,
+                        ProductDesc=product.ProductDesc,
+                        ProductavailableQuantity=product.ProductavailableQuantity
+                    });
+                }
+            }
+            Debug.WriteLine(products[0]);
+            Debug.WriteLine(products[0].ProductName);
+
+            return products;
+        }
+
+
         List<string> msg = new List<string>();
         int[] added = { 0, 0, 0, 0 };
-        List<product> Products = new List<product>()
-        {
-            new product { product_id=0, product_name = "Product 1", product_desc = "P1", product_availableQuantity = 24 },
-            new product { product_id=1, product_name = "Product 2", product_desc = "P2", product_availableQuantity = 34 },
-            new product { product_id=2, product_name = "Product 3", product_desc = "P3", product_availableQuantity = 34 },
-            new product { product_id=3, product_name = "Product 4", product_desc = "P4", product_availableQuantity = 34 },
-        };
 
-        //List<int> avl = new List<int>();
-
-        public List<product> getProducts()
-        {
-            return Products;
-        }
 
         public async Task<List<string>> checkQuantity(addedProduct[] addedToCart)
         {
@@ -40,9 +85,11 @@ namespace Products.Services
       
             for (int i = 0; i < addedToCart.Length; i++)
             {
-                var k = Products.FindIndex(x=>x.product_name==addedToCart[i].product_name);
+                List<ProductDB> products = new List<ProductDB>();
+                products = await GetAllProducts();
+                var k = products.FindIndex(x=>x.ProductId==addedToCart[i].productId);
                 Debug.WriteLine(k);
-                if(addedToCart[i].addedQuantity>Products[k].product_availableQuantity)
+                if(addedToCart[i].productaddedQuantity>products[k].ProductavailableQuantity)
                 {
                     Debug.WriteLine("Insufficient");
                     msg.Add("Insufficient");
@@ -103,3 +150,18 @@ namespace Products.Services
         }
     }
 }
+
+//List<product> Products = new List<product>()
+//{
+//    new product { product_id=0, product_name = "Product 1", product_desc = "P1", product_availableQuantity = 24 },
+//    new product { product_id=1, product_name = "Product 2", product_desc = "P2", product_availableQuantity = 34 },
+//    new product { product_id=2, product_name = "Product 3", product_desc = "P3", product_availableQuantity = 34 },
+//    new product { product_id=3, product_name = "Product 4", product_desc = "P4", product_availableQuantity = 34 },
+//};
+
+//List<int> avl = new List<int>();
+
+//public List<product> getProducts()
+//{
+//    return Products;
+//}

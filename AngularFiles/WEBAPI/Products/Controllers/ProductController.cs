@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Products.Services;
 using System.Net.Http;
 using System.Diagnostics;
-
+using Products.Model;
 
 namespace Products.Controllers
 {
@@ -22,20 +22,39 @@ namespace Products.Controllers
             _productService = productService;
             _clientFactory = clientFactory;
         }
-        List<string> msg = new List<string>();
 
-        [HttpGet]
-        public List<product> Get()
-        {
-           return _productService.getProducts();
-        }
+        List<string> msg = new List<string>();
+        List<ProductDB> li = new List<ProductDB>();
 
         [HttpPost]
-        public async Task<List<string>> Post([FromBody] productInCart obj)
+        public long Post([FromBody] ProductDB obj)
         {
             var myobj = obj;
-            Debug.WriteLine(myobj.addedToCart[0].product_name);
-            msg=await _productService.checkQuantity(myobj.addedToCart);
+            Debug.WriteLine(myobj.ProductDesc);
+            long id=_productService.AddProduct(myobj);
+            return id;
+            //string s= _productService.AddProduct(myobj);
+            //if (s == "Success")
+            //    return Ok();
+            //else
+            //    return BadRequest(s);
+        }
+
+        [HttpGet]
+        public async Task<List<ProductDB>> Getall()
+        {
+            li = await _productService.GetAllProducts();
+            return li;
+        }
+
+        [Route("[action]")]
+        [HttpPost]//cart
+        public async Task<List<string>> Cart([FromBody] productInCart obj)
+        {
+            var myobj = obj;
+            Debug.WriteLine(myobj.addedToCart[0].productId);
+            Debug.WriteLine(myobj.addedToCart[0].productaddedQuantity);
+            msg = await _productService.checkQuantity(myobj.addedToCart);
             return msg;
         }
 

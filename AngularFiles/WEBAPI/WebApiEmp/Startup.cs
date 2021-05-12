@@ -13,7 +13,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Session;
 using Business.Managers;
 using Products.Services;
-
+using Products.Model;
+using Microsoft.EntityFrameworkCore;
+using Payment.Services;
 
 namespace WebApiEmp
 {
@@ -32,8 +34,11 @@ namespace WebApiEmp
            
             services.AddControllers();
             services.AddScoped<LoginManager,LoginManager>();
+            services.AddDbContext<ProductContext>(options => options.UseSqlServer(Configuration["ConnectionString:Productdb"]));
+            //services.AddDbContext<ProductContext>(options=>options.UseSqlServer(Configuration["ConnectionString:Productdb"],b=>b.MigrationsAssembly("Products")));
             services.AddSingleton<AddedQuantity, AddedQuantity>();
             services.AddScoped<ProductService, ProductService>();
+            services.AddScoped<TransactionService, TransactionService>();
             services.AddHttpClient();
             services.AddCors(options =>
             {

@@ -12,4 +12,12 @@ namespace Payment
 
         public string Summary { get; set; }
     }
+
+    public class Product
+    {
+        public long ProductId { get; set; }
+        public string ProductName { get; set; }
+        public string ProductDesc { get; set; }
+        public int ProductavailableQuantity { get; set; }
+    }
 }

@@ -3,10 +3,10 @@ import { Injectable } from '@angular/core';
 
 export interface ProductInterface
 {
-  product_availableQuantity: number;
-  product_desc: string;
-  product_id: number;
-  product_name: string;
+  productavailableQuantity: number;
+  productDesc: string;
+  productId: number;
+  productName: string;
 }
 
 @Injectable({

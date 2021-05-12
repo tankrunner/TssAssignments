@@ -7,3 +7,6 @@ D:\rahul\ProgDocs\.NET\WebApiEmp\Common\obj\Debug\netcoreapp3.1\Common.AssemblyI
 D:\rahul\ProgDocs\.NET\WebApiEmp\Common\obj\Debug\netcoreapp3.1\Common.csproj.CoreCompileInputs.cache
 D:\rahul\ProgDocs\.NET\WebApiEmp\Common\obj\Debug\netcoreapp3.1\Common.dll
 D:\rahul\ProgDocs\.NET\WebApiEmp\Common\obj\Debug\netcoreapp3.1\Common.pdb
+D:\rahul\ProgDocs\.NET\WebApiEmp\Common\bin\Debug\netcoreapp3.1\Common.runtimeconfig.json
+D:\rahul\ProgDocs\.NET\WebApiEmp\Common\bin\Debug\netcoreapp3.1\Common.runtimeconfig.dev.json
+D:\rahul\ProgDocs\.NET\WebApiEmp\Common\obj\Debug\netcoreapp3.1\Common.genruntimeconfig.cache

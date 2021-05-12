@@ -3,7 +3,8 @@
         <h1>Products</h1>
     </div>
     <div class="col">
-        <button type="button" class="btn btn-info float-right" [routerLink]="['/cart']">View Cart ({{cartCount}})</button>
+        <button type="button" class="btn btn-info float-right" [routerLink]="['/cart']">View Cart
+            ({{cartCount}})</button>
     </div>
 </div>
 
@@ -20,15 +21,37 @@
             </thead>
             <tbody>
                 <tr *ngFor="let obj of product; let i=index">
-                    <th scope="row">{{obj.product_name}}</th>
-                    <td>{{obj.product_availableQuantity}}</td>
-                    <td>{{obj.product_desc}}</td>
+                    <th scope="row">{{obj.productName}}</th>
+                    <td>{{obj.productavailableQuantity}}</td>
+                    <td>{{obj.productDesc}}</td>
                     <td>
-                        <button type="button" class="btn btn-info" (click)="add(obj.product_id);disableBtn($event);">Add</button>
+                        <button type="button" class="btn btn-info"
+                            (click)="add(i);disableBtn($event);">Add</button>
                     </td>
                 </tr>
             </tbody>
 
         </table>
     </div>
+
+    <form #frm="ngForm" (ngSubmit)="sub(frm)">
+        <div class="form-group">
+            <label>Product Name</label>
+            <input type="text" name="ProductName" class="form-control" placeholder="Enter Product Name" ngModel>
+        </div>
+    
+        <div class="form-group">
+            <label>Product Description</label>
+            <input type="text" name="ProductDesc" class="form-control" placeholder="Enter Product Description" ngModel>
+        </div>
+    
+        <div class="form-group">
+            <label>Product Qty</label>
+            <input type="number" name="ProductavailableQuantity" class="form-control" placeholder="Enter Product Qty" ngModel>
+        </div>
+    
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
 </div>
+

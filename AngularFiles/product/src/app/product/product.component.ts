@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { ProductInterface } from 'src/Services/product-cart.service';
+import {NgForm} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -26,7 +29,7 @@ export class ProductComponent implements OnInit {
     this.subscription=this.http.get("https://localhost:44356/product").subscribe(
       data => {
         this.product = data;
-        console.log(data[0]["product_name"]);
+        console.log(data[0]["productName"]);
         for (let k in data) {
           console.log(data[k]);
           this.arr.push(<ProductInterface>data[k]);
@@ -54,6 +57,14 @@ export class ProductComponent implements OnInit {
     console.log(this.productCart.arr);
     this.cartCount += 1;
     
+  }
+
+  sub(form:NgForm):void{
+    console.log(form.value);
+    this.http.post("https://localhost:44356/product", form.value).subscribe(
+      data => { console.log(data); },
+      err=>{console.error(err);});
+
   }
 
   // viewCart():void{

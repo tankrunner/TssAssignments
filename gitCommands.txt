@@ -1,0 +1,86 @@
+
+rahul@LAPTOP-CI1Q2RLA MINGW64 /d/rahul/ProgDocs/Angular/AngularFiles (master)
+$ git commit -m "8-3-21"
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   src/app/add/add.component.html
+        modified:   src/app/add/add.component.ts
+        modified:   src/app/app-routing.module.ts
+        modified:   src/app/directory/directory.component.html
+        modified:   src/app/directory/directory.component.ts
+        modified:   src/app/dlogin.guard.ts
+        modified:   src/app/login/login.component.html
+        modified:   src/app/loginstate.service.ts
+        modified:   src/index.html
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        src/supportingFiles/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+rahul@LAPTOP-CI1Q2RLA MINGW64 /d/rahul/ProgDocs/Angular/AngularFiles (master)
+$ git add
+Nothing specified, nothing added.
+Maybe you wanted to say 'git add .'?
+
+rahul@LAPTOP-CI1Q2RLA MINGW64 /d/rahul/ProgDocs/Angular/AngularFiles (master)
+$ git add .
+warning: LF will be replaced by CRLF in AngularFiles/src/app/add/add.component.html.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in AngularFiles/src/app/add/add.component.ts.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in AngularFiles/src/app/app-routing.module.ts.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in AngularFiles/src/app/directory/directory.component.html.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in AngularFiles/src/app/directory/directory.component.ts.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in AngularFiles/src/app/dlogin.guard.ts.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in AngularFiles/src/app/login/login.component.html.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in AngularFiles/src/app/loginstate.service.ts.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in AngularFiles/src/index.html.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in AngularFiles/src/supportingFiles/transfer.service.spec.ts.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in AngularFiles/src/supportingFiles/transfer.service.ts.
+The file will have its original line endings in your working directory
+
+rahul@LAPTOP-CI1Q2RLA MINGW64 /d/rahul/ProgDocs/Angular/AngularFiles (master)
+$ git commit -m "8-3-21"
+[master 5570d01] 8-3-21
+ 11 files changed, 118 insertions(+), 59 deletions(-)
+ rewrite AngularFiles/src/app/login/login.component.html (94%)
+ create mode 100644 AngularFiles/src/supportingFiles/transfer.service.spec.ts
+ create mode 100644 AngularFiles/src/supportingFiles/transfer.service.ts
+
+rahul@LAPTOP-CI1Q2RLA MINGW64 /d/rahul/ProgDocs/Angular/AngularFiles (master)
+$ git push
+fatal: The current branch master has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin master
+
+
+rahul@LAPTOP-CI1Q2RLA MINGW64 /d/rahul/ProgDocs/Angular/AngularFiles (master)
+$ git push origin master
+Enumerating objects: 35, done.
+Counting objects: 100% (35/35), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (19/19), done.
+Writing objects: 100% (20/20), 2.89 KiB | 328.00 KiB/s, done.
+Total 20 (delta 14), reused 0 (delta 0)
+remote: Resolving deltas: 100% (14/14), completed with 14 local objects.
+remote:
+remote: Heads up! The branch 'master' that you pushed to was renamed to 'main'.
+remote:
+To https://github.com/rahulghatkar19/TssAssignments.git
+   91b30d7..5570d01  master -> master
+
+rahul@LAPTOP-CI1Q2RLA MINGW64 /d/rahul/ProgDocs/Angular/AngularFiles (master)
+$

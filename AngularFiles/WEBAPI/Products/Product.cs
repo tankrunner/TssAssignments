@@ -23,8 +23,8 @@ namespace Products
 
     public class addedProduct
     {
-        public string product_name { get; set; }
-        public int addedQuantity { get; set; }
+        public int productId { get; set; }
+        public int productaddedQuantity { get; set; }
     }
     public class productInCart
     {
